@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>slice tester</title>
+    <script src="/Scripts/jquery-1.6.3.min.js"></script>
+    <link href="/Content/TMMsite.css" rel="stylesheet" />
+    <style>
+        form {
+            padding: 10px 10px 10px 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin: 0 15px 0 0;
+            color: white;
+        }
+
+        input {
+            font-size: 14px;
+        }
+
+        #go {
+            margin-left: 115px;
+        }
+
+        #output {
+            color: White;
+            margin-left: 115px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#go').click(getSlice);
+        });
+        function getSlice() {
+            var bigString = $('#bigString').val();
+            var start = Number($('#start').val());
+            var end = Number($('#end').val());
+            var subString = bigString.slice(start, end);
+            $('#output').text(subString);
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript <i>&</i> jQuery
+            </p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Testing string slices</h1>
+                <p>
+                    <label for="bigString">
+                        The big string:</label>
+                    <input type='text' id='bigString' value='abcdefghijklmnopqrstuvwxyz' />
+                </p>
+                <p>
+                    <label for="start">
+                        Start:</label>
+                    <input type='text' id='start' value='0' />
+                </p>
+                <p>
+                    <label for="end">
+                        End:</label>
+                    <input type='text' id='end' value='0' />
+                </p>
+                <button id='go'>
+                    Get a slice</button><br />
+                <div id='output'>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+    </div>
+</body>
+</html>

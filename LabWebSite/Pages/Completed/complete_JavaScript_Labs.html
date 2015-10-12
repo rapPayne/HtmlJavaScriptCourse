@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Survey Results</title>
+    <link href="/Content/TMMsite.css" rel="stylesheet" />
+    <script src="/Scripts/surveyResults.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <p class="logo">JavaScript Labs</p>
+        </header>
+        <div class="content">
+            <div class="main">
+                <h1>Survey Results</h1>
+                <canvas id="resultsCanvas" width="850" height="600"></canvas>
+                <button id="SummaryButton">Summary</button>
+                <button id="OverallScoreButton">Overall score</button>
+                <button id="TrendsButton">Trends</button>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+    </div>
+    <script>
+        // Set bounds and stuff
+        var canvasWidth = 850;
+        var canvasHeight = 600;
+        var bottomMargin = 100;
+        var topMargin = 50;
+        var leftMargin = 100;
+        var rightMargin = 50;
+        var bottomOfGraph = canvasHeight - bottomMargin;
+        var topOfGraph = topMargin;
+        var rightSideOfGraph = canvasWidth - rightMargin;
+        var leftSideOfGraph = leftMargin;
+
+        var minXValue = 1;
+        var maxXValue = raw_survey_results.daily_results.length;
+        var minYValue = 0;
+        var maxYValue = 100;
+        var xTic = (rightSideOfGraph - leftSideOfGraph) / (maxXValue - minXValue);
+        var yTic = (bottomOfGraph - topOfGraph) / (maxYValue - minYValue);
+
+        var horizontalBarsEvery = 5;
+        var verticalBarsEvery = 1;
+
+        // Put your canvas setup here
+        var canvas = document.getElementById("resultsCanvas");
+        var ctx = canvas.getContext("2d");
+        // Paint background white
+        ctx.fillStyle = "rgba(255, 255, 255, 1)";
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        // Big title across top
+        ctx.fillStyle = "Purple";
+        ctx.font = "bold 24px arial";
+        ctx.fillText("Survey Trends by Day", 300, 25);
+        ctx.font = "bold 18px arial";
+        DrawAxes();
+        //Draw the Excellent lines in green, Good ones in blue, Okay in violet, and so on...
+        plotPoints("Excellent", "green");
+        plotPoints("Good", "blue");
+        plotPoints("Okay", "violet");
+        plotPoints("Poor", "orange");
+        plotPoints("Terrible", "red");
+        function plotPoints(level, color) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.moveTo(getXPointOnGraph(0, level), getYPointOnGraph(0, level));
+            for (var i = minXValue; i < maxXValue; i++) {
+                var x = getXPointOnGraph(i, level);
+                var y = getYPointOnGraph(i, level);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+            ctx.closePath();
+        }
+        function DrawAxes() {
+            // Draw horizontal lines
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "cyan";
+            for (var i = topOfGraph; i <= bottomOfGraph; i = i + (horizontalBarsEvery * yTic)) {
+                ctx.moveTo(leftSideOfGraph, i);
+                ctx.lineTo(rightSideOfGraph, i);
+            }
+            // Draw vertical lines
+            for (var i = leftSideOfGraph; i <= rightSideOfGraph; i = i + (verticalBarsEvery * xTic)) {
+                ctx.moveTo(i, bottomOfGraph);
+                ctx.lineTo(i, topOfGraph);
+            }
+            ctx.stroke();
+            ctx.closePath();
+            // Draw x-axis
+            ctx.beginPath();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 5;
+            ctx.moveTo(leftSideOfGraph, bottomOfGraph);
+            ctx.lineTo(rightSideOfGraph, bottomOfGraph);
+            ctx.stroke();
+            ctx.closePath();
+            // Draw y-axis
+            ctx.beginPath();
+            ctx.moveTo(leftSideOfGraph, bottomOfGraph);
+            ctx.lineTo(leftSideOfGraph, topOfGraph);
+            ctx.stroke();
+            ctx.closePath();
+            //Put the numbers 0-100 on the y-axis
+            ctx.font = "bold 12px arial";
+            for (var i = minYValue; i <= maxYValue; i++) {
+                ctx.textAlign = "right";
+                if (i % horizontalBarsEvery == 0)
+                    ctx.fillText(i, leftSideOfGraph - (5), bottomOfGraph - (i * yTic));
+            }
+            //Put the days 0-30 on the x-axis
+            for (var i = minXValue; i <= maxXValue; i++) {
+                ctx.textAlign = "center";
+                if (i % verticalBarsEvery == 0)
+                    ctx.fillText(i, leftSideOfGraph + ((i - 1) * xTic), bottomOfGraph + 20);
+            }
+            // Label x-axis
+            ctx.font = "bold 18px arial";
+            ctx.textAlign = "center";
+            ctx.fillText("Day", leftSideOfGraph + (rightSideOfGraph - leftSideOfGraph) / 2, canvasHeight - (canvasHeight - bottomOfGraph) / 2);
+            // Label y-axis
+            ctx.textAlign = "center";
+            textWidth = ctx.measureText("100").width;
+            ctx.fillText("Scores", (leftSideOfGraph - textWidth) / 2, 250);
+        }
+        function getXPointOnGraph(sequence, level) {
+            return leftSideOfGraph + (sequence * xTic);
+        }
+        function getYPointOnGraph(sequence, level) {
+            var value = raw_survey_results.daily_results[sequence][level];
+            return bottomOfGraph - (value * yTic);
+        }
+    </script>
+</body>
+</html>

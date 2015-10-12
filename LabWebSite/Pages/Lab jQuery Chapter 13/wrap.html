@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Using .wrap()</title>
+    <link href="/Content/TMMsite.css" rel="stylesheet">
+    <style>
+        #gallery img {
+            display: inline-block;
+            margin: 10px;
+            position: relative;
+        }
+
+        #gallery .figure {
+            float: left;
+            border: 1px solid white;
+            margin-right: 10px;
+            text-align: center;
+        }
+    </style>
+    <script src="/Scripts/jquery-1.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // loop through the list of images
+            $('img').each(function () {
+                // save reference to current image
+                var $this = $(this);
+                // get the alt property for the caption
+                var caption = $this.attr('alt');
+                // add the HTML
+                $this.wrap('<div class="figure"></div>').after('<p>' + caption + '</p>');
+            }); // end each
+
+        }); // end ready
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript <i>&</i> jQuery
+            </p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Using .wrap()</h1>
+                <div id="gallery">
+                    <img src="images/zoom_out.png" width="80" height="80" alt="zoom">
+                    <img src="images/vacancy.png" width="80" height="80" alt="vacnacy"><img src="images/user.png"
+                        width="80" height="80" alt="user"><img src="images/upload.png" width="80" height="80"
+                            alt="upload"><img src="images/undo.png" width="80" height="80" alt="undo"><img src="images/support.png"
+                                width="80" height="80" alt="support">
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+    </div>
+</body>
+</html>

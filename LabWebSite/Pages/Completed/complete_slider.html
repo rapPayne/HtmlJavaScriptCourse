@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Anything Slider</title>
+<link href="/Content/TMMsite.css" rel="stylesheet">
+<link href="anythingSlider/anythingslider.css" rel="stylesheet">
+<script src="/Scripts/jquery-1.6.3.min.js"></script>
+<script src="anythingSlider/jquery.anythingslider.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#slider').anythingSlider();
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header"><p class="logo">JavaScript & jQuery</p></div>
+  <div class="content">
+    <div class="main">
+      <h1>Anything Slider</h1>
+      <div id="slider">
+        <div><a href="page1.html"><img src="images/pumpkin.jpg" width="700" height="390" alt="Pumpkin"></a></div>
+        <div><a href="page2.html"><img src="images/grapes.jpg" width="700" height="390" alt="Grapes"></a></div>
+        <div><a href="page3.html"><img src="images/various.jpg" width="700" height="390" alt="Various"></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><p>JavaScript &amp; jQuery</p></div>
+</div>
+</body>
+</html>

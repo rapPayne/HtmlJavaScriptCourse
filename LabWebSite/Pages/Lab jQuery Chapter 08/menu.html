@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>In Page Viewer</title>
+    <link href="/Content/TMMsite.css" rel="stylesheet">
+    <style>
+        #navigation ul, #navigation li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #navigation a {
+            background-color: rgb(204,204,204);
+            text-decoration: none;
+            font: 16px 'ColaborateLightRegular', Arial, sans-serif;
+            text-indent: 10px;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #999;
+            border-bottom: 1px solid #999;
+            margin: 0px;
+            padding: 0px;
+            color: rgb(53,75,118);
+        }
+
+            #navigation a:hover {
+                border-top: 1px solid #999;
+                border-left: 1px solid #999;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                background-color: #555;
+                color: white;
+            }
+
+        #navigation .stack > a {
+            background-image: url(images/arrow.png);
+            background-repeat: no-repeat;
+            background-position: 97% 8px;
+        }
+
+            #navigation .stack > a:hover {
+                background-position: 97% -78px;
+            }
+
+        #navigation ul .stack > a {
+            background-position: 97% -21px;
+        }
+
+            #navigation ul .stack > a:hover {
+                background-position: 97% -54px;
+            }
+    </style>
+    <script src="/Scripts/jquery-1.6.3.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+        }); // end ready
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript <i>&</i> jQuery
+            </p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Navigation Menu</h1>
+                <ul id="navigation">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us </a>
+                        <ul>
+                            <li><a href="#">Our History</a></li>
+                            <li><a href="#">Driving Directions</a></li>
+                            <li><a href="#">Hours</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Our Products </a>
+                        <ul>
+                            <li><a href="#">Gizmos </a>
+                                <ul>
+                                    <li><a href="#">Gizmo Basic</a></li>
+                                    <li><a href="#">Gizmo Standard</a></li>
+                                    <li><a href="#">Gizmo Supreme</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Gadgets </a>
+                                <ul>
+                                    <li><a href="#">Gadget Basic</a></li>
+                                    <li><a href="#">Gadget Standard</a></li>
+                                    <li><a href="#">Gadget Supreme</a>
+                                        <ul>
+                                            <li><a href="#">Gadget Supreme A</a></li>
+                                            <li><a href="#">Gadget Supreme B</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Time Machines</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="clear: both; padding-top: 20px;">Example of a simple navigation menu using jQuery and Daniel Thomson's <a href="https://github.com/dansdom/plugins-navigation">jQuery Navigation Plugin</a>.</p>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "HTML, JavaScript, and jQuery Labs";
+}
+@section Header {
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")"></script>
+<script>
+    $(function () {
+        $('#accordion').accordion({heightStyle: "content", collapsible: true });
+    });
+</script>
+}
+<h2>@ViewBag.Message</h2>
+
+@Html.Raw(ViewBag.HtmlFilesLists)

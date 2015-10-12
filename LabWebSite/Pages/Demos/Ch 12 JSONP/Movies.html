@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+    <style>
+        .entry {
+            clear: both;
+        }
+        .poster {
+            height: 100px;
+            padding: 5px;
+            float: left;
+        }
+        .title {
+            width: 100%;
+            color: white;
+            font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+            padding: 5px;
+        }
+        .description {
+            color: white;
+            font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+            padding: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bolder;
+        }
+    </style>
+    <link href="/Content/TMMsite.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#search').keyup(function (evt) {
+                var searchString = $(this).val();
+                var firstletter = searchString.substr(0, 1);
+                url = "http://sg.media-imdb.com/suggests/" + firstletter + "/" + searchString + ".json";
+                console.log(url);
+                //Make the Ajax JSONP call here
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript & jQuery
+            </p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Movies</h1>
+                <p>On this page, we can enter a movie name or an actor in the search box and run some
+                    search.  To make things easier, we've decided to implement an auto-suggest function.
+                    That is, as the user is typing into the textbox below, we'll grab the keystrokes and
+                    make a call to a service that will return the most popular film titles and actors
+                    matching your search.
+                </p>
+                <label for="search">Search</label>
+                <input type="text" name="search" id="search" />
+                <button id="goButton">Go</button>
+                <div id="suggestions"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>JavaScript & jQuery</p>
+        </div>
+    </div>
+</body>
+</html>

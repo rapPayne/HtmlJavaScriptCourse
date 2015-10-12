@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rollover Images</title>
+    <link href="/Content/TMMsite.css" rel="stylesheet">
+    <style>
+        #gallery {
+            float: left;
+            width: 90px;
+            margin-right: 30px;
+            margin-left: 10px;
+            border-right: white 1px dotted;
+        }
+
+            #gallery img {
+                display: inline-block;
+                margin: 0 0 10px 0;
+                border: 1px solid rgb(0,0,0);
+            }
+
+        #photo {
+            margin-left: 150px;
+            position: relative;
+        }
+
+            #photo img {
+                position: absolute;
+            }
+    </style>
+    <script src="/Scripts/jquery-1.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#gallery img').each(function (i) {
+                var imgFile = $(this).attr('src');
+                var preloadImage = new Image();
+                var imgExt = /(\.\w{3,4}$)/;
+                preloadImage.src = imgFile.replace(imgExt, '_h$1');
+
+                $(this).hover(
+                    function () {
+                        $(this).attr('src', preloadImage.src);
+                    },
+                    function () {
+                        var currentSource = $(this).attr('src');
+                        $(this).attr('src', imgFile);
+                    }); // end hover
+            }); // end each
+
+            //insert new programming below this line
+
+
+        }); // end ready
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript <i>&</i> jQuery
+            </p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Slideshow</h1>
+                <div id="gallery">
+                    <a href="/Content/Images/large/slide1.jpg">
+                        <img src="/Content/Images/small/slide1.jpg" width="70" height="70" alt="golf balls" />
+                    </a>
+                    <a href="/Content/Images/large/slide2.jpg">
+                        <img src="/Content/Images/small/slide2.jpg" width="70" height="70" alt="rock wall" />
+                    </a>
+                    <a href="/Content/Images/large/slide3.jpg">
+                        <img src="/Content/Images/small/slide3.jpg" width="70" height="70" alt="old course /">
+                    </a>
+                    <a href="/Content/Images/large/slide4.jpg">
+                        <img src="/Content/Images/small/slide4.jpg" width="70" height="70" alt="tees" />
+                    </a>
+                    <a href="/Content/Images/large/slide5.jpg">
+                        <img src="/Content/Images/small/slide5.jpg" width="70" height="70" alt="tree" />
+                    </a>
+                    <a href="/Content/Images/large/slide6.jpg">
+                        <img src="/Content/Images/small/slide6.jpg" width="70" height="70" alt="ocean course" />
+                    </a>
+                </div>
+                <div id="photo"></div>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+
+    </div>
+</body>
+</html>

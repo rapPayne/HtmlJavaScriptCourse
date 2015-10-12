@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using Functions</title>
+<link href="/Content/TMMsite.css" rel="stylesheet">
+<script>
+function printToday() {
+ var today = new Date();
+ document.write(today.toDateString());
+}
+
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+	<div class="header"><p class="logo">JavaScript & jQuery</p></div>
+<div class="content">
+	<div class="main">
+<h1>Using Functions</h1>
+		<p>Today is <strong>
+		<script>printToday();</script>
+		</strong></p>
+</div>
+</div>
+  <div class="footer"><p>JavaScript &amp; jQuery</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        var xmlhttp = new XMLHttpRequest();
+        function showProductInfo(prodId) {
+            xmlhttp.open("GET", "/Product/GetProductInfo/" + prodId, false);
+            xmlhttp.onreadystatechange = displayProductInfo;
+            xmlhttp.send();
+        }
+        function displayProductInfo() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var detailsDiv = document.getElementById('detailsDiv');
+                var json = JSON.parse(xmlhttp.responseText);
+                console.log("json=", json);
+                detailsDiv.innerHTML = json.productName;
+            }
+        }
+        function hideProductInfo() {
+            document.getElementById('detailsDiv').innerHTML = "";
+        }
+    </script>
+    <style>
+        #detailsDiv
+        {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Products</h1>
+    <div id="div1" onmouseover="showProductInfo(10);" onmouseout="hideProductInfo();">
+        Product 10
+    </div>
+    <div id="div2" onmouseover="showProductInfo(21);" onmouseout="hideProductInfo();">
+        Product 21
+    </div>
+    <div id="div3" onmouseover="showProductInfo(34);" onmouseout="hideProductInfo();">
+        Product 34
+    </div>
+    <div id="div4" onmouseover="showProductInfo(14);" onmouseout="hideProductInfo();">
+        Product 14
+    </div>
+    <div id="detailsDiv">
+    </div>
+</body>
+</html>

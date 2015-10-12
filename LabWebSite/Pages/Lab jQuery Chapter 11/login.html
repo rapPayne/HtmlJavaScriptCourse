@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link href="/Content/TMMsite.css" rel="stylesheet">
+<style>
+form {
+	padding: 10px 10px 10px 10px;
+}
+label {
+	display: inline-block;
+	width: 100px;
+	text-align:right;
+	margin: 0 15px 0 0;
+	color: white;
+}
+input {
+	font-size: 14px;
+}
+#button {
+	margin-left: 115px;
+}
+</style>
+<script src="/Scripts/jquery-1.6.3.min.js"></script>
+<script>
+//Students note: The login service is found at "/Home/Chapter11LoginService"
+$(document).ready(function() {
+			
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+        <div class="header">
+            <p class="logo">
+                JavaScript <i>&</i> jQuery</p>
+        </div>
+	<div id="content">
+		<div class="main">
+			<h1>Login</h1>
+			<div id="formwrapper">
+				<form method="get" action="login.php" id="login">
+					<p>
+						<label for="username">Username:</label>
+						<input type="text" name="username" id="username">
+					</p>
+					<p>
+						<label for="password">Password: </label>
+						<input type="text" name="password" id="password">
+					</p>
+					<p>
+						<input type="submit" name="button" id="button" value="Submit" >
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+<footer>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+</footer>
+</div>
+</body>
+</html>

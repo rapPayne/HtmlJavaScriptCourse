@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Survey Results</title>
+    <link href="/Content/TMMsite.css" rel="stylesheet" />
+    <script src="/Scripts/surveyResults.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <p class="logo">JavaScript Labs</p>
+        </header>
+        <div class="content">
+            <div class="main">
+                <h1>Survey Results</h1>
+                <canvas id="resultsCanvas" width="850" height="600"></canvas>
+                <button id="SummaryButton">Summary</button>
+                <button id="OverallScoreButton">Overall score</button>
+                <button id="TrendsButton">Trends</button>
+            </div>
+        </div>
+        <footer>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">HTML5 and JavaScript Labs</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://AgileGadgets.com" property="cc:attributionName" rel="cc:attributionURL">AgileGadgets LLC</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </footer>
+    </div>
+    <script>
+        // Put your canvas setup here
+        var canvas = document.getElementById("resultsCanvas");
+        var ctx = canvas.getContext("2d");
+        // Paint background white
+        ctx.fillStyle = "rgba(255, 255, 255, 1)";
+        ctx.fillRect(0, 0, 850, 600);
+        // Big title across top
+        ctx.fillStyle = "Purple";
+        ctx.font = "bold 24px arial";
+        ctx.fillText("Survey Trends by Day", 300, 25);
+        ctx.font = "bold 18px arial";
+        // Draw x-axis
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 5;
+        ctx.moveTo(100, 500);
+        ctx.lineTo(800, 500);
+        ctx.stroke();
+        ctx.closePath();
+        // Draw y-axis
+        ctx.beginPath();
+        ctx.moveTo(100, 500);
+        ctx.lineTo(100, 50);
+        ctx.stroke();
+        ctx.closePath();
+        // Label x-axis
+        ctx.font = "bold 18px arial";
+        ctx.textAlign = "center";
+        ctx.fillText("Day", 100 + (800 - 100) / 2, 600 - (600 - 500) / 2);
+        // Label y-axis
+        ctx.textAlign = "center";
+        textWidth = ctx.measureText("100").width;
+        ctx.fillText("Scores", (100 - textWidth) / 2, 250);
+    </script>
+</body>
+</html>

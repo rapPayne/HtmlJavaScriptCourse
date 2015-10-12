@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "About the HTML & JavaScript Labs";
+}
+<script>
+    function getDirections() {
+        var fromLatLon = getCurrentLocation();
+        var toLatLon = "34.92,-92.24";
+        var url = "http://maps.google.com/maps?saddr=" + fromLatLon + "&daddr=" + toLatLon;
+        var mapwin = window.open(url, "Directions to us", "toolbar=no");
+        alert("howdy");
+    }
+    function getCurrentLocation() {
+        if (!navigator.geolocation) {
+            return "34.92,-92.24";
+        }
+        return "34.92,-92.24";
+
+    }
+</script>
+<h2>About this site</h2>
+<p>
+     These labs are for use with the HTML5, CSS3, JavaScript, jQuery, and Ajax classes.
+</p>
+<p>
+<button id="getDirectionsButton" onclick="getDirections()">Get directions</button>
+</p>
